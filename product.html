@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KUDETA — Product</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+<header class="header">
+  <div class="container row">
+    <a class="brand" href="index.html">KUDETA</a>
+    <nav class="nav">
+      <a href="catalog.html">Shop</a>
+      <a href="info.html">Info</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="cta">Cart <span data-cart-count>0</span></a>
+    </nav>
+  </div>
+</header>
+
+  <main class="container main-grid">
+    <div id="not-found" style="display:none">
+      <h1 class="title">Not found</h1>
+      <p class="muted">We couldn't find that product.</p>
+      <p><a href="catalog.html">Back to catalog</a></p>
+    </div>
+
+    <div id="content" style="display:none">
+      <div class="product-layout">
+        <section class="gallery">
+          <div class="main"></div>
+          <div class="thumbs"></div>
+        </section>
+        <section>
+          <h1 id="name" class="title" style="font-size:18px"></h1>
+          <div class="row muted" style="margin:6px 0 10px">
+            <span>★ <span id="rating"></span></span>
+            <span style="margin-left:8px" class="price" id="price"></span>
+          </div>
+          <p id="desc" class="muted"></p>
+
+          <div id="color-section" style="margin-top:16px">
+            <div class="title" style="margin-bottom:6px">Color</div>
+            <div id="colors" class="option-row"></div>
+          </div>
+          <div id="size-section" style="margin-top:16px">
+            <div class="title" style="margin-bottom:6px">Size</div>
+            <div id="sizes" class="option-row"></div>
+          </div>
+
+          <div class="row" style="margin-top:18px">
+            <button id="add" class="btn primary">Add to cart</button>
+            <a href="catalog.html" class="btn">Keep shopping</a>
+          </div>
+          <div id="added" class="muted" style="margin-top:8px;height:20px"></div>
+        </section>
+      </div>
+
+      <section style="margin-top:32px">
+        <h2 class="title">You might also like</h2>
+        <div id="reco" class="grid cols-4"></div>
+      </section>
+    </div>
+  </main>
+  
+<footer class="footer" id="contact">
+  <div class="container" style="display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap">
+    <div class="brand">KUDETA</div>
+    <div class="muted" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">© KUDETA</div>
+  </div>
+</footer>
+
+  <script src="data/products.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/product.js"></script>
+</body>
+</html>

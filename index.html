@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KUDETA — Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 3D background -->
+<div id="bg3d"></div>
+  
+<header class="header">
+  <div class="container row">
+    <a class="brand" href="index.html"><img src="assets/kudeta1.png" alt="Kudeta Logo"></a>
+    <nav class="nav">
+      <a href="catalog.html">Shop</a>
+      <a href="info.html">Info</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="cta">Cart <span data-cart-count>0</span></a>
+    </nav>
+  </div>
+</header>
+
+  <main class="container main-grid">
+    <div class="grid cols-4" id="grid"></div>
+  </main>
+  
+<footer class="footer" id="contact">
+  <div class="container" style="display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap">
+    <div class="brand">KUDETA</div>
+    <div class="footer-logo">
+      <img src="assets/kdtglobe.PNG" alt="KDT Globe Logo">
+    </div>
+      </div>
+</footer>
+
+  <script src="data/products.js"></script>
+  <script src="scripts/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const grid = document.getElementById("grid");
+      const { formatCurrency } = Shop;
+  
+      (window.PRODUCTS || []).forEach((p) => {
+        const a = document.createElement("a");
+        a.href = `product.html?id=${encodeURIComponent(p.id)}`;
+        a.className = "card";
+  
+        const firstImg = (p.images && p.images[0]) ? p.images[0] : "";
+  
+        a.innerHTML = `
+          <div class="thumb">
+            ${firstImg ? `<img src="${firstImg}" alt="${p.name}" loading="lazy">` : ""}
+          </div>
+          <div class="pad">
+            <div class="title">${p.name}</div>
+            <div class="row" style="justify-content:space-between;margin-top:6px">
+              <div class="muted" style="font-size:12px">${p.inStock ? "In stock" : "Sold out"}</div>
+              <div class="price">${formatCurrency(p.price)}</div>
+            </div>
+          </div>`;
+        grid.appendChild(a);
+      });
+    });
+  </script>
+  
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="scripts/bg3d.js"></script>  
+</body>
+</html>
