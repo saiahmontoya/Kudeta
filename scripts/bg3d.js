@@ -1,6 +1,6 @@
 (function () {
   // CONFIG
-  const LOGO_PATH = "assets/kdtglobe.png"; // logo texture
+  const LOGO_PATH = "/assets/kdtglobe.png"; // logo texture
   const ROTATION_SPEED = 0.01;  // spin speed
   const SCALE = 2.2;            // overall size multiplier
 
