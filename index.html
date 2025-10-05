@@ -1,44 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-
   <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>KUDETA — Entrance</title>
+  <link rel="canonical" href="https://kudeta.world/" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
   <!-- Basic SEO -->
-<meta name="title" content="KUDETA">
-<meta name="description" content="Welcome to the Magic Show">
+  <meta name="title" content="KUDETA — Entrance">
+  <meta name="description" content="Welcome to the Magic Show">
 
-<!-- Open Graph (used by iMessage, Facebook, Slack, etc.) -->
-<meta property="og:title" content="KUDETA">
-<meta property="og:description" content="Welcome to the Magic Show">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://kudeta.world/">
-<meta property="og:image" content="https://kudeta.world/assets/kdtglobe.png">
-<!-- If your image is square, you can keep these; otherwise 1200x630 is common -->
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="1200">
+  <!-- Open Graph (iMessage, FB, Slack, etc.) -->
+  <meta property="og:site_name" content="KUDETA">
+  <meta property="og:title" content="KUDETA — Entrance">
+  <meta property="og:description" content="Welcome to the Magic Show">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kudeta.world/">
+  <!-- Make sure this file exists exactly at this path/case -->
+  <meta property="og:image" content="https://kudeta.world/assets/kdtglobe.png">
+  <meta property="og:image:secure_url" content="https://kudeta.world/assets/kdtglobe.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="KUDETA Globe">
 
-<!-- Twitter Card (X) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="KUDETA">
-<meta name="twitter:description" content="Welcome to the Magic Show">
-<meta name="twitter:image" content="https://kudeta.world/assets/kdtglobe.png">
-
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KUDETA — Entrance">
+  <meta name="twitter:description" content="Welcome to the Magic Show">
+  <meta name="twitter:image" content="https://kudeta.world/assets/kdtglobe.png">
 
   <style>
-    :root {
-      --bg:#0a0a0a;
-      --fg:#f5f5f5;
-      --muted:#a3a3a3;
-      --accent:#9be7ff;
-    }
+    :root { --bg:#0a0a0a; --fg:#f5f5f5; --muted:#a3a3a3; --accent:#9be7ff; }
 
     html, body {
       height: 100%;
@@ -51,7 +49,7 @@
     /* Fullscreen wrapper, safe-area aware, perfect centering */
     .wrap {
       min-height: 100vh;
-      min-height: 100svh;   /* iOS modern units */
+      min-height: 100svh;
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
@@ -72,68 +70,59 @@
       filter: drop-shadow(0 8px 24px rgba(0,0,0,.45));
     }
 
-/* Gate container: center its children perfectly */
-.gate{
-  width: 100%;
-  max-width: 540px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* <- centers the input horizontally */
-  text-align: center;
-}
+    /* Gate container: center its children perfectly */
+    .gate{
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
     /* Headline */
     .gate .muted {
       font-family: 'Anton', sans-serif;
       font-size: clamp(16px, 2.6vw, 24px);
-      letter-spacing: 0.35em;      /* gives the spaced-out look */
+      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--fg);
       margin: 0 0 6px;
       opacity: .95;
     }
 
-    /* Sharp input */
-.input{
-  width: min(420px, 92vw);       /* not 100%, so it can be centered visually */
-  box-sizing: border-box;        /* includes the 2px border in that width */
-  display: block;                /* required for margin auto to work if needed */
-  margin: 16px auto 0;           /* keeps it centered even outside flex */
-  padding: 14px 16px;
-  border: 2px solid var(--fg);
-  border-radius: 0;
-  background: transparent;
-  color: var(--fg);
-  font-size: clamp(14px, 4vw, 18px);
-  font-family: 'Anton', sans-serif;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  text-align: center;
-  outline: none;
-  box-shadow: none;
-  transition: border-color .25s ease, color .25s ease, box-shadow .2s ease, background .2s ease;
-}
-
-.input:focus{
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(255,255,255,.03);
-  box-shadow: 0 0 12px 0 rgba(155,231,255,.35);
-}
-
-.input::placeholder{ color: rgba(255,255,255,.45); letter-spacing:.12em; transition: color .25s ease, opacity .25s ease; }
-.input:focus::placeholder{ color: transparent; opacity: 0; }
-
-    .err {
-      color: #ff7b7b;
-      margin-top: 10px;
-      font-size: 13px;
-      min-height: 1.2em;
-      display: none;
+    /* Sharp, centered input */
+    .input{
+      width: min(420px, 92vw);
+      box-sizing: border-box;
+      display: block;
+      margin: 16px auto 0;
+      padding: 14px 16px;
+      border: 2px solid var(--fg);
+      border-radius: 0;
+      background: transparent;
+      color: var(--fg);
+      font-size: clamp(14px, 4vw, 18px);
+      font-family: 'Anton', sans-serif;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      text-align: center;
+      outline: none;
+      box-shadow: none;
+      transition: border-color .25s ease, color .25s ease, box-shadow .2s ease, background .2s ease;
     }
+    .input:focus{
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 0 12px 0 rgba(155,231,255,.35);
+    }
+    .input::placeholder{ color: rgba(255,255,255,.45); letter-spacing:.12em; transition: color .25s ease, opacity .25s ease; }
+    .input:focus::placeholder{ color: transparent; opacity: 0; }
 
-    /* Mobile fine-tuning */
+    .err { color: #ff7b7b; margin-top: 10px; font-size: 13px; min-height: 1.2em; display: none; }
+
     @media (max-width: 600px) {
       .logo { width: clamp(220px, 62vw, 360px); }
       .gate .muted { letter-spacing: .25em; }
@@ -146,8 +135,6 @@
     <img src="assets/kdtglobe-nobg.png" alt="Kudeta Logo" class="logo" />
 
     <div class="gate">
-      <!-- If you prefer manual spacing, replace text with your spaced version.
-           This version uses letter-spacing for perfect responsiveness. -->
       <p class="muted">Under Construction</p>
 
       <div id="error" class="err" aria-live="polite"></div>
@@ -166,48 +153,35 @@
   <script>
     (function () {
       // NOTE: Client-side passwords are visible in source.
-      // Use server-side auth or Cloudflare Access for true protection.
       const PASSWORD = "peepeenigga232";
       const REDIRECT_TO = "home.html";
 
       const input = document.getElementById("pwd");
       const error = document.getElementById("error");
 
-      // Skip gate if already granted in this tab
       if (sessionStorage.getItem("kudeta_access") === "granted") {
-        window.location.href = REDIRECT_TO;
-        return;
+        window.location.href = REDIRECT_TO; return;
       }
 
       function showError(msg) {
         error.textContent = msg;
         error.style.display = "block";
-        setTimeout(() => {
-          if (error.textContent === msg) error.style.display = "none";
-        }, 3500);
+        setTimeout(() => { if (error.textContent === msg) error.style.display = "none"; }, 3500);
       }
 
       function attempt() {
         const val = (input.value || "").trim();
-        if (!val) {
-          showError("Please enter the password.");
-          input.focus();
-          return;
-        }
+        if (!val) { showError("Please enter the password."); input.focus(); return; }
         if (val === PASSWORD) {
           sessionStorage.setItem("kudeta_access", "granted");
           window.location.href = REDIRECT_TO;
         } else {
           showError("Incorrect password.");
-          input.value = "";
-          input.focus();
+          input.value = ""; input.focus();
         }
       }
 
-      // Press Enter to submit (no button)
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") attempt();
-      });
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") attempt(); });
     })();
   </script>
 </body>
