@@ -4,41 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>KUDETA — Home</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <!-- 3D background -->
+  <!-- background canvas target -->
   <div id="bg3d"></div>
 
   <header class="header">
     <div class="container row">
-      <a class="brand" href="home.html">
-        <img src="assets/kudetalogo1-removebg.png" alt="Kudeta Logo" />
-      </a>
+      <a class="brand" href="/home.html"><img src="assets/kudeta1.PNG" alt="KDT Globe Logo" /></a>
       <nav class="nav">
-        <a href="catalog.html">Shop</a>
-        <a href="info.html">Info</a>
+        <a href="/catalog.html">Shop</a>
+        <a href="/info.html">Info</a>
         <a href="#contact">Contact</a>
         <a href="#" class="cta">Cart <span data-cart-count>0</span></a>
       </nav>
     </div>
   </header>
 
-  <!-- No product grid here anymore -->
+  <main></main>
 
   <footer class="footer" id="contact">
     <div class="container" style="display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap">
-      <div class="brand"></div>
       <div class="footer-logo">
-        <img src="assets/kdtglobe.PNG" alt="KDT Globe Logo" />
+        <img src="assets/kdtglobe-nobg.png" alt="KDT Globe Logo" />
       </div>
     </div>
   </footer>
 
-  <!-- keep for cart badge -->
+  <!-- app helper (optional) -->
   <script src="/scripts/app.js"></script>
 
-  <!-- three.js spinner -->
+  <!-- Three + spinner (must be after #bg3d exists) -->
   <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
   <script src="/scripts/bg3d.js"></script>
 </body>

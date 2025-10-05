@@ -5,6 +5,9 @@ html,body{height: 100%;margin:0;display:flex;flex-direction:column;padding:0;fon
 main {
   flex: 1 0 auto;
 }
+body {
+  background-color: #000000; /* pure black */
+}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .container{max-width:1280px;margin:0 auto;padding:0 16px}
@@ -103,8 +106,32 @@ img{max-width:100%;display:block}
   justify-content:space-between;
   gap:16px;
 }
-  
+.logo {
+  background-color: #000000;
+  display: inline-block;
+  width: clamp(300px, 40vw, 600px); /* responsive scaling */
+  height: auto;
+  margin-bottom: -20px; /* optional: tweak spacing */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 @media (max-width:960px){.product-layout{grid-template-columns:1fr}}
 header, main, footer { position:relative; z-index:1; }
 #bg3d { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: var(--bg); }
 #bg3d canvas { width: 100vw; height: 100vh; display: block; }
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+

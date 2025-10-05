@@ -1,7 +1,5 @@
 {
   "name": "kdt-site",
   "compatibility_date": "2025-10-04",
-  "assets": {
-    "directory": "."
-  }
+  "pages_build_output_dir": "."
 }

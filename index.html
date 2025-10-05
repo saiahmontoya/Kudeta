@@ -2,131 +2,192 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <title>KUDETA — Entrance</title>
+
   <style>
-    :root{
-      --bg:#0a0a0a; --fg:#f5f5f5; --muted:#a3a3a3;
+    :root {
+      --bg:#0a0a0a;
+      --fg:#f5f5f5;
+      --muted:#a3a3a3;
       --accent:#9be7ff;
     }
-    html,body{
-      height:100%; margin:0;
-      font-family:Inter,system-ui,Roboto,Arial,sans-serif;
-      background:var(--bg); color:var(--fg);
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Inter, system-ui, Roboto, Arial, sans-serif;
     }
 
-    /* Centering layout */
-.wrap {
-  min-height: 100vh;
+    /* Fullscreen wrapper, safe-area aware, perfect centering */
+    .wrap {
+      min-height: 100vh;
+      min-height: 100svh;   /* iOS modern units */
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      padding: calc(env(safe-area-inset-top,0px) + 12px) 16px calc(env(safe-area-inset-bottom,0px) + 16px);
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    /* Logo (responsive) */
+    .logo {
+      width: clamp(240px, 38vw, 520px);
+      height: auto;
+      display: block;
+      margin: 0 auto -8px;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,.45));
+    }
+
+/* Gate container: center its children perfectly */
+.gate{
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center; /* center vertically */
-  gap: 40px; /* space between logo and form */
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-
-    /* Background logo (separate entity, not inside any card) */
-.logo {
-  width: 240px; /* adjust to fit visually */
-  height: auto;
-  margin-bottom: -40px; /* pulls the text box closer if needed */
-}
-
-    /* Minimal gate UI (no box, just text + input) */
-.gate {
-  position: relative;
-  z-index: 1;
-  width: min(480px, 90vw);
+  align-items: center; /* <- centers the input horizontally */
   text-align: center;
 }
-    .gate h1{
-      margin:0 0 6px;
-      font-size:18px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-      font-weight:600;
-    }
-    .input{
-      width:100%;
-      padding:12px 14px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.02);
-      color:var(--fg);
-      margin-top:12px;
-      font-size:15px;
-      box-sizing:border-box;
-      outline:none;
-    }
-    .input::placeholder{color:#9aa}
-    .err{
-      color:#ff7b7b;
-      margin-top:10px;
-      font-size:13px;
-      min-height:1.2em;
+
+    /* Headline */
+    .gate .muted {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(16px, 2.6vw, 24px);
+      letter-spacing: 0.35em;      /* gives the spaced-out look */
+      text-transform: uppercase;
+      color: var(--fg);
+      margin: 0 0 6px;
+      opacity: .95;
     }
 
-    /* small screens */
-    @media (max-width:480px){
-      .logo{ width: clamp(200px, 60vw, 360px); transform:translate(-50%,-58%); }
+    /* Sharp input */
+.input{
+  width: min(420px, 92vw);       /* not 100%, so it can be centered visually */
+  box-sizing: border-box;        /* includes the 2px border in that width */
+  display: block;                /* required for margin auto to work if needed */
+  margin: 16px auto 0;           /* keeps it centered even outside flex */
+  padding: 14px 16px;
+  border: 2px solid var(--fg);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fg);
+  font-size: clamp(14px, 4vw, 18px);
+  font-family: 'Anton', sans-serif;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+  transition: border-color .25s ease, color .25s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.input:focus{
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 0 12px 0 rgba(155,231,255,.35);
+}
+
+.input::placeholder{ color: rgba(255,255,255,.45); letter-spacing:.12em; transition: color .25s ease, opacity .25s ease; }
+.input:focus::placeholder{ color: transparent; opacity: 0; }
+
+    .err {
+      color: #ff7b7b;
+      margin-top: 10px;
+      font-size: 13px;
+      min-height: 1.2em;
+      display: none;
+    }
+
+    /* Mobile fine-tuning */
+    @media (max-width: 600px) {
+      .logo { width: clamp(220px, 62vw, 360px); }
+      .gate .muted { letter-spacing: .25em; }
+      .input { padding: 12px 12px; letter-spacing: .12em; }
     }
   </style>
 </head>
 <body>
-<div class="wrap">
-  <img src="assets/kudetalogo1-removebg.png" alt="Kudeta Logo" class="logo" />
-  
-  <div class="gate">
-    <p class="muted">Under Construction</p>
-    <div id="error" class="err" style="display:none"></div>
-    <input id="pwd" class="input" type="password" placeholder="Enter password" aria-label="Password">
+  <div class="wrap">
+    <img src="assets/kdtglobe-nobg.png" alt="Kudeta Logo" class="logo" />
+
+    <div class="gate">
+      <!-- If you prefer manual spacing, replace text with your spaced version.
+           This version uses letter-spacing for perfect responsiveness. -->
+      <p class="muted">Under Construction</p>
+
+      <div id="error" class="err" aria-live="polite"></div>
+
+      <input
+        id="pwd"
+        class="input"
+        type="password"
+        placeholder="Enter password"
+        aria-label="Password"
+        autocomplete="current-password"
+      />
+    </div>
   </div>
-</div>
 
-<script>
-(function(){
-  // ===== CONFIG =====
-  // Replace with your password (client-side only; not secure against source viewing)
-  const PASSWORD = "peepeenigga232";
+  <script>
+    (function () {
+      // NOTE: Client-side passwords are visible in source.
+      // Use server-side auth or Cloudflare Access for true protection.
+      const PASSWORD = "peepeenigga232";
+      const REDIRECT_TO = "home.html";
 
-  // Where to send users after success
-  const REDIRECT_TO = "home.html";
+      const input = document.getElementById("pwd");
+      const error = document.getElementById("error");
 
-  const input = document.getElementById("pwd");
-  const error = document.getElementById("error");
+      // Skip gate if already granted in this tab
+      if (sessionStorage.getItem("kudeta_access") === "granted") {
+        window.location.href = REDIRECT_TO;
+        return;
+      }
 
-  // Skip gate if already granted in this tab
-  if (sessionStorage.getItem("kudeta_access") === "granted") {
-    window.location.href = REDIRECT_TO;
-  }
+      function showError(msg) {
+        error.textContent = msg;
+        error.style.display = "block";
+        setTimeout(() => {
+          if (error.textContent === msg) error.style.display = "none";
+        }, 3500);
+      }
 
-  function showError(msg){
-    error.textContent = msg;
-    // auto-clear after a moment
-    setTimeout(()=>{ if (error.textContent === msg) error.textContent = ""; }, 3500);
-  }
+      function attempt() {
+        const val = (input.value || "").trim();
+        if (!val) {
+          showError("Please enter the password.");
+          input.focus();
+          return;
+        }
+        if (val === PASSWORD) {
+          sessionStorage.setItem("kudeta_access", "granted");
+          window.location.href = REDIRECT_TO;
+        } else {
+          showError("Incorrect password.");
+          input.value = "";
+          input.focus();
+        }
+      }
 
-  function attempt(){
-    const val = (input.value || "").trim();
-    if (!val){ showError("Please enter the password."); input.focus(); return; }
-    if (val === PASSWORD){
-      sessionStorage.setItem("kudeta_access","granted");
-      window.location.href = REDIRECT_TO;
-    } else {
-      showError("Incorrect password.");
-      input.value = "";
-      input.focus();
-    }
-  }
-
-  // Press Enter to submit (no button)
-  input.addEventListener("keydown", (e)=>{
-    if (e.key === "Enter") attempt();
-  });
-})();
-</script>
+      // Press Enter to submit (no button)
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") attempt();
+      });
+    })();
+  </script>
 </body>
 </html>
